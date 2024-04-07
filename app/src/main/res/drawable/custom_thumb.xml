@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#444444" /> <!-- color of the thumb -->
+    <size android:width="30dp" android:height="3dp" /> <!-- size of the thumb -->
+    <corners android:radius="15dp" /> <!-- roundness of the thumb -->
+</shape>

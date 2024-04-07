@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background">
+        <shape>
+            <solid android:color="#B0B0B0" />
+            <corners android:radius="10dp" />
+            <size android:height="30dp" />
+        </shape>
+    </item>
+
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape>
+                <solid android:color="#808080" /> <!-- color of the SeekBar progress -->
+                <corners android:radius="10dp" /> <!-- roundness of the SeekBar progress -->
+                <size android:height="30dp" /> <!-- thickness of the SeekBar progress -->
+            </shape>
+        </clip>
+    </item>
+</layer-list>

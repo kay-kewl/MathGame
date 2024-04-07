@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/game_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Math Game"
+            android:gravity="center_horizontal"
+            android:textColor="@color/black"
+            android:textSize="50sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/notification_count"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/circle_background"
+            android:text="1"
+            android:layout_marginStart="250dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:paddingTop="3dp"
+            android:paddingStart="8dp"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/start_button"
+        android:layout_width="200dp"
+        android:layout_height="75dp"
+        android:text="Start"
+        android:textSize="24sp"
+        android:layout_marginTop="200dp"
+        style="@style/MyButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frame_layout" />
+
+    <Button
+        android:id="@+id/scores_button"
+        android:layout_width="200dp"
+        android:layout_height="75dp"
+        android:text="Scores"
+        android:textSize="24sp"
+        android:layout_marginTop="30dp"
+        style="@style/MyButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/start_button" />
+
+    <Button
+        android:id="@+id/settings_button"
+        android:layout_width="200dp"
+        android:layout_height="75dp"
+        android:text="Settings"
+        android:textSize="24sp"
+        android:layout_marginTop="30dp"
+        style="@style/MyButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scores_button" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

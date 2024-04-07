@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Math Game</string>
+    <string name="click_me">Click me</string>
+    <string name="achievement_icon">Description of the achievement icon</string>
+</resources>

@@ -1,4 +1,4 @@
-package com.example.itismydomain
+package com.example.mathgame
 
 data class Equation(
     val equation: String,

@@ -2,4 +2,8 @@
     <string name="app_name">Math Game</string>
     <string name="click_me">Click me</string>
     <string name="achievement_icon">Description of the achievement icon</string>
+
+    <string name="score_text">Score: %d</string>
+    <string name="username_text">Username: %s</string>
+    <string name="date_text">Date: %s</string>
 </resources>

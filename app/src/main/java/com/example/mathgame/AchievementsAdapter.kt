@@ -7,8 +7,8 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.itismydomain.Achievement
-import com.example.itismydomain.R
+import com.example.mathgame.Achievement
+import com.example.mathgame.R
 
 class AchievementAdapter(private val context: Context, private val achievements: List<Achievement>) : RecyclerView.Adapter<AchievementAdapter.ViewHolder>() {
 

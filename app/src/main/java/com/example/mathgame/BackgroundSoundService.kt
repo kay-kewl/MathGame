@@ -1,4 +1,4 @@
-package com.example.itismydomain
+package com.example.mathgame
 
 import android.app.Service
 import android.content.BroadcastReceiver

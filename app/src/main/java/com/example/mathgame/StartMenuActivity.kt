@@ -1,4 +1,4 @@
-package com.example.itismydomain
+package com.example.mathgame
 
 import AchievementAdapter
 import AchievementTracker
@@ -23,12 +23,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.slider.Slider
 import com.google.android.material.switchmaterial.SwitchMaterial
+import java.util.UUID
 
 class StartMenuActivity : BaseActivity() {
     private lateinit var options: ActivityOptions
     private lateinit var sharedPref: SharedPreferences
     private lateinit var achievementTracker: AchievementTracker
-
+    private lateinit var firebaseDatabaseHelper: FirebaseDatabaseHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,8 +39,14 @@ class StartMenuActivity : BaseActivity() {
 
         sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         options = ActivityOptions.makeCustomAnimation(this, 0, 0)
+        val currentUserName = sharedPref.getString("UserName", null)
 
         initializeAchievements()
+        firebaseDatabaseHelper = FirebaseDatabaseHelper()
+
+        if (currentUserName == null) {
+            assignUserName()
+        }
 
         val gameTitle = findViewById<TextView>(R.id.game_title)
         val notificationCountTextView = findViewById<TextView>(R.id.notification_count)
@@ -80,6 +87,7 @@ class StartMenuActivity : BaseActivity() {
             achievementsList.adapter = AchievementAdapter(this, achievements)
 
             val closeButton = dialog.findViewById<Button>(R.id.close_button)
+            closeButton.background = roundedButtonDrawable
             closeButton.setOnClickListener {
                 newAchievementsCount = getNewAchievementsCount()
                 if (newAchievementsCount > 0) {
@@ -239,4 +247,21 @@ class StartMenuActivity : BaseActivity() {
         }
     }
 
+    private fun assignUserName() {
+        firebaseDatabaseHelper.getAllUsers { users ->
+            val existingNames = users.map { it.name }
+            val newName = generateSequence(1) { it + 1 }
+                .map { "Player$it" }
+                .first { it !in existingNames }
+
+            val sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+            with(sharedPref.edit()) {
+                putString("UserName", newName)
+                val userId = UUID.randomUUID().toString()
+                putString("UserId", userId)
+                firebaseDatabaseHelper.addUser(userId, newName)
+                apply()
+            }
+        }
+    }
 }

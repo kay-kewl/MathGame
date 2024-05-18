@@ -1,6 +1,7 @@
-package com.example.itismydomain
+package com.example.mathgame
 
 import AchievementTracker
+import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.GradientDrawable
@@ -26,16 +27,28 @@ class GameActivity : BaseActivity() {
     private lateinit var timer: CountDownTimer
     private lateinit var achievementTracker: AchievementTracker
     private lateinit var recentScoresManager: RecentScoresManager
-
+    private lateinit var firebaseDatabaseHelper: FirebaseDatabaseHelper
+    private lateinit var options: ActivityOptions
+    private var userId: String? = null
+    private var userName: String? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
 
+        options = ActivityOptions.makeCustomAnimation(this, R.anim.slow_slide_up, R.anim.hold)
+
+
         achievementTracker = AchievementTracker(this)
         achievementTracker.checkAchievement("Here we go again...", true)
         recentScoresManager = RecentScoresManager(this)
+
+        firebaseDatabaseHelper = FirebaseDatabaseHelper()
+
+        val sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        userId = sharedPref.getString("UserId", null)
+        userName = sharedPref.getString("UserName", null)
 
         timerProgressBar = findViewById<ProgressBar>(R.id.timer_progress_bar)
         scoreTextView = findViewById<TextView>(R.id.score_text_view)
@@ -164,10 +177,13 @@ class GameActivity : BaseActivity() {
             }
             achievementTracker.checkAchievement("It's not about victory after all", score == 0)
 
+            if (userId != null) {
+                firebaseDatabaseHelper.addScore(userId!!, score)
+            }
 
             val intent = Intent(this, EndMenuActivity::class.java)
             intent.putExtra("score", score)
-            startActivity(intent)
+            startActivity(intent, options.toBundle())
             finish()
         }
     }

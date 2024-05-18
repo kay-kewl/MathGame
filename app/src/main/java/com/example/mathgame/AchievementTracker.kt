@@ -1,6 +1,6 @@
 import android.content.Context
-import com.example.itismydomain.Achievement
-import com.example.itismydomain.R
+import com.example.mathgame.Achievement
+import com.example.mathgame.R
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 

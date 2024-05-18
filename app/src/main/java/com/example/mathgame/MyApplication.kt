@@ -1,10 +1,11 @@
-package com.example.itismydomain
+package com.example.mathgame
 
 import android.app.Activity
 import android.app.Application
 import android.os.Bundle
 import android.content.Intent
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import com.google.firebase.FirebaseApp
 
 class MyApplication : Application(), Application.ActivityLifecycleCallbacks {
 
@@ -13,6 +14,7 @@ class MyApplication : Application(), Application.ActivityLifecycleCallbacks {
 
     override fun onCreate() {
         super.onCreate()
+        FirebaseApp.initializeApp(this)
         registerActivityLifecycleCallbacks(this)
     }
 

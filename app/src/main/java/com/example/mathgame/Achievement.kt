@@ -1,14 +1,14 @@
-package com.example.itismydomain
+package com.example.mathgame
 
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
 data class Achievement(
-    var icon: Int,  // current icon id
-    val name: String,  // name of the achievement
-    var description: String,  // description of the achievement
-    var isAchieved: Boolean,  // whether the achievement is achieved
-    var isNew: Boolean = false  // whether the achievement is new
+    var icon: Int,
+    val name: String,
+    var description: String,
+    var isAchieved: Boolean,
+    var isNew: Boolean = false
 ) {
     companion object {
         private val gson = Gson()

@@ -1,4 +1,4 @@
-package com.example.itismydomain
+package com.example.mathgame
 
 import android.view.LayoutInflater
 import android.view.View
